@@ -1,24 +1,19 @@
-#El postprocesador FFmpegAudioConvertor depende de tener FFmpeg correctamente instalado en tu sistema por lo que se debe descargar.
-#pip install yt-dlp
-#pip install -U yt-dlp
-
 import yt_dlp as youtube_dl
 
 def des_mp3(url):
     ydl_opts = {
-        'ffmpeg_location': 'C:/ffmpeg/ffmpeg.exe',  # Ruta a FFmpeg
-        'format': 'bestaudio/best',  # Descargar el mejor audio disponible
+        'ffmpeg_location': 'C:/ffmpeg/ffmpeg.exe',  # Ruta a FFmpeg 
+        'format': 'bestaudio/best',  
         'postprocessors': [{
-            'key': 'FFmpegExtractAudio',  # Usamos el nombre correcto del postprocesador
-            'preferredcodec': 'mp3',  # Convertir a MP3
-            'preferredquality': '192',  # Calidad 192 kbps
+            'key': 'FFmpegExtractAudio',
+            'preferredcodec': 'mp3',  
+            'preferredquality': '192', 
         }],
-        'outtmpl': '%(title)s.%(ext)s',  # Guardar con el título del video y la extensión
+        'outtmpl': '%(title)s.%(ext)s', 
     }
 
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-        ydl.download([url])  # Descargar el video desde la URL
+        ydl.download([url]) 
 
-# URL del video de YouTube
-url = 'https://www.youtube.com/watch?v=hTILrvRkliQ'
+url = 'https://www.youtube.com/'
 des_mp3(url)
